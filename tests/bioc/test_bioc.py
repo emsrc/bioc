@@ -9,35 +9,35 @@ class BioCTests(unittest.TestCase):
         self.src = os.path.join(os.path.dirname(__file__), 'everything.xml')
 
     def test_load(self):
-        with open(self.src) as fp:
+        with open(self.src, 'rb') as fp:
             collection = bioc.load(fp)
         self.__test_collection(collection)
 
     def test_loads(self):
-        with open(self.src) as fp:
+        with open(self.src, 'rb') as fp:
             s = fp.read()
         collection = bioc.loads(s)
         self.__test_collection(collection)
 
     def test_dump(self):
-        with open(self.src) as fp:
+        with open(self.src, 'rb') as fp:
             collection = bioc.load(fp)
         tmp = tempfile.NamedTemporaryFile()
-        with open(tmp.name, 'w') as fp:
+        with open(tmp.name, 'wb') as fp:
             bioc.dump(collection, fp)
-        with open(tmp.name) as fp:
+        with open(tmp.name, 'rb') as fp:
             collection = bioc.load(fp)
         self.__test_collection(collection)
 
     def test_dumps(self):
-        with open(self.src) as fp:
+        with open(self.src, 'rb') as fp:
             collection = bioc.load(fp)
         s = bioc.dumps(collection)
         collection = bioc.loads(s)
         self.__test_collection(collection)
 
     def test_validate(self):
-        with open(self.src) as fp:
+        with open(self.src, 'rb') as fp:
             collection = bioc.load(fp)
         bioc.validate(collection)
 

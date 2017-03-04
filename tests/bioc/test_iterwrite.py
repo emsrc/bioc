@@ -9,7 +9,7 @@ class IterwriteTests(unittest.TestCase):
         self.src = os.path.join(os.path.dirname(__file__), 'everything.xml')
 
     def test(self):
-        with open(self.src) as fp:
+        with open(self.src, 'rb') as fp:
             collection = bioc.load(fp)
         tmp = tempfile.NamedTemporaryFile()
 

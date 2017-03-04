@@ -96,7 +96,7 @@ class BioCAnnotation:
         return s
 
     def get_total_location(self):
-        start = sys.maxint
+        start = sys.maxsize
         end = 0
         for loc in self.locations:
             start = min(start, loc.offset)
